@@ -1,4 +1,4 @@
 public class PenaltyRepository
 {
-    public List<string> DB;
+    public List<Penalty> DB;
 }

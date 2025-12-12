@@ -10,6 +10,7 @@ public class PackageMenuService
     
     public PackageMenu CreateMenu(PackageMenu menuRequest){ return null;}
     public PackageMenu FindAnyMenu(string id){return null;} 
+    public List<PackageMenu> FindAllMenu(){return repository.DB;}
     public PackageMenu UpdateMenu(PackageMenu menuRequest){return null;}
     public void DeleteMenu(string id){}
 
