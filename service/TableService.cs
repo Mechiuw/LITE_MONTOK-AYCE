@@ -44,7 +44,7 @@ public class TableService
             x => x.table_num,
             validTable.table_num
             );
-        repository.DB[targetIndex] = updateRequest;
+        repository.DB[targetIndex] = validTable;
 
         // return response
         return tableResponse;
