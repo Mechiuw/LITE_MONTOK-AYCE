@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Leonovo\\.nuget\\packages\\": {}
+    "C:\\Users\\geami\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leonovo\\dotnet\\RESTv2\\RESTv2.csproj",
+      "projectUniqueName": "C:\\Users\\geami\\LITE_MONTOK-AYCE\\RESTv2.csproj",
       "projectName": "RESTv2",
-      "projectPath": "C:\\Users\\Leonovo\\dotnet\\RESTv2\\RESTv2.csproj",
-      "packagesPath": "C:\\Users\\Leonovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leonovo\\dotnet\\RESTv2\\obj\\",
+      "projectPath": "C:\\Users\\geami\\LITE_MONTOK-AYCE\\RESTv2.csproj",
+      "packagesPath": "C:\\Users\\geami\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\geami\\LITE_MONTOK-AYCE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Leonovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\geami\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
