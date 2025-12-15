@@ -8,10 +8,15 @@ public class TuiTable
     // 3. FIND(READ 1/ALL)
     // 4. UPDATE
     // 5. DELETE
-    public static void TableDashboard()
+    public static void DashboardPage()
     {
         // buatkan TUI Dashboard disini mau pake string 
         // atau Console.WriteLine() langsung bebas, pokoknya nanti 
         // ngeprint menu buat navigasi langsung
     }
+
+    public static void CreateTablePage(){}
+    public static void ViewTablePage(){} // Read Tui Function
+    public static void UpdateTablePage(){}
+    public static void DeleteTablePage(){}
 }
