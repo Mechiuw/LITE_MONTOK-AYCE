@@ -2,15 +2,15 @@ public class Router
 {
     public static string Route()
     {
-        string input = InputMachine.Engine(); // sementara
-        switch (input)
-        {
-            case "a":
-            return ""; // placeholder
-            default:
+        // string input = InputMachine.Engine(); // sementara
+        // switch (input)
+        // {
+        //     case "a":
+        //     return ""; // placeholder
+        //     default:
             
-            break;
-        }
+        //     break;
+        // }
         return ""; // placeholder
     }
 

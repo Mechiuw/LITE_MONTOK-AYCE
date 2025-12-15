@@ -1,17 +1,5 @@
-public class InputMachine
+public class InputMachine<T>
 {
-    public static string Engine()
-    {
-        Boolean trigger = true;
-        while (trigger)
-        {
-            Console.Write(">");
-            string? input = Console.ReadLine();
-            if (input == ":!Q")
-            {
-                break;
-            }
-        }
-        return "[EXIT] SUCCESS EXITED FROM PROGRAM";
-    }
+    public EServiceCode eServiceCode {get; set;}
+    public EActionCode eActionCode {get; set;}
 }
