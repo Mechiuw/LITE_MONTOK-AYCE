@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RESTv2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+386e0566bba405268416b33358bcc1d20ceb5d04")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76ff7201cd0a382459057d631f9c688713dba296")]
 [assembly: System.Reflection.AssemblyProductAttribute("RESTv2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RESTv2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
