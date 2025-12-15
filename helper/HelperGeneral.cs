@@ -17,4 +17,9 @@ public class HelperGeneral<T>
         } 
         return request;
     }
+
+    public static void Testing()
+    {
+        
+    }
 }
