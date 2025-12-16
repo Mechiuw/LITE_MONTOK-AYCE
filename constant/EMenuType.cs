@@ -1,5 +1,6 @@
 public enum EMenuType
 {
     STANDARD,
-    PREMIUM
+    PREMIUM,
+    BLANK
 }

@@ -1,6 +1,6 @@
 public class Router
 {
-    public static string Route()
+    public static void Route() // top abstract/general dispatcher
     {
         // string input = InputMachine.Engine(); // sementara
         // switch (input)
@@ -11,8 +11,10 @@ public class Router
             
         //     break;
         // }
-        return ""; // placeholder
     }
 
- 
+    public static void ServiceRouteHandler()
+    {
+           
+    }
 }

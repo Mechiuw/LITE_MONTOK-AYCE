@@ -2,22 +2,6 @@ using System;
 
 public class tabelPaket
 {
-    public static void Main(string[] args)
-    {
-        Console.Clear(); // Bersihkan konsol setiap kali menu ditampilkan (opsional, tapi bagus untuk tampilan)
-        Console.WriteLine("============================================");
-        Console.WriteLine("              TABEL DAFTAR PAKET            ");
-        Console.WriteLine("============================================");
-        Console.WriteLine("| No. | Daftar Sesi                        |");
-        Console.WriteLine("|-----|------------------------------------|");
-        Console.WriteLine("| 1   | Tambah Tabel                       |");
-        Console.WriteLine("| 2   | Tampilkan Tabel (Any/ALL)          |");
-        Console.WriteLine("| 3   | Ubah Tabel                         |");
-        Console.WriteLine("| 4   | Delete Tabel                       |");
-        Console.WriteLine("| 5   | Keluar                             |");
-        Console.WriteLine("============================================");
-    }
-
     public static void DashboardPage()
     {
         Console.Clear();
