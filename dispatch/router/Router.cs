@@ -2,10 +2,10 @@ public class Router
 {
     public static void Route() // top abstract/general dispatcher
     {
-        // string input = InputMachine.Engine(); // sementara
+        string input = Console.ReadLine(); // sementara
         // switch (input)
         // {
-        //     case "a":
+        //     case "":
         //     return ""; // placeholder
         //     default:
             
@@ -15,6 +15,6 @@ public class Router
 
     public static void ServiceRouteHandler()
     {
-           
+        
     }
 }

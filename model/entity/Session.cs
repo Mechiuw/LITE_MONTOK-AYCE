@@ -4,7 +4,7 @@ public class Session
     public int total_person;
     public List<string> id_package;
     public Timer timer_session;
-    public bool status;
+    public bool open_status;
     
     
 }
