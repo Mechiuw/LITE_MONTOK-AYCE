@@ -4,6 +4,7 @@ public class TrxCalculator
     {
         if(sessionRequest.penalties.Count == 0) // kalo gaada penalti
         {
+            
             return 0;
         }
 
