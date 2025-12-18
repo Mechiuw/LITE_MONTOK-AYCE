@@ -1,13 +1,15 @@
 public class TrxCalculator
 {
-    public static double CalculatePayment(Session sessionRequest)
+    public static double CalculatePayment(int total_person, double total_penalty, double total_package)
     {
-        if(sessionRequest.penalties.Count == 0) // kalo gaada penalti
-        {
-            
-            return 0;
-        }
+        // if() // kalo gaada penalti
+        // {
+        //     Console.WriteLine("[PENALTY CALC] No Penalties Found");
+        // }
 
+        //1. kalo gaada penalti
+        //2. kalo gaada penambahan menu
+        
         return 0;
     } 
 }
