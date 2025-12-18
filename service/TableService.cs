@@ -12,58 +12,46 @@ public class TableService
     
     public Table CreateNewTable(Table tableRequest) // CREATE
     {
-        // WIP butuh validator (I/O)
-        Table newTable = tableRequest;
+        int tableNumCounter = 1; // buat auto assign jika dari request null
+        Table newTable = new()
+        {
+            id_session = tableRequest.id_session,
+            status = ETableStatus.AVAILLABLE,
+            table_num = tableRequest.table_num ?? $"{tableNumCounter++}"
+        };
         repository.DB.Add(newTable);
         return newTable;
     }
-    public (bool,Table) FindAnyTable(string id) // READ
-    {
+    public Table FindAnyTable(string id) // READ
+    {   
         foreach (Table table in repository.DB)
         {
             if(table.table_num == id)
-            return (true,table);
+              return table;
         }
-        return (false,Table.NotFoundQuery());
+        throw new Exception($"Not found any table with id: {id}");
+
     }
-    public Table UpdateATable(Table updateRequest) // UPDATE
+    public List<Table> FindAllTable()
     {
-        // tampung request ke variable
-        string requestId = updateRequest.table_num; 
-        (bool,Table) option = FindAnyTable(requestId);
+        return repository.DB;
+    }
+    public Table UpdateATable(Table tableRequest) // UPDATE
+    {
+        _ = FindAnyTable(tableRequest.table_num);
 
-        // validasi dari query yang ada
-        Table validTable = HelperGeneral<Table>.ValidateSearchOutput(option.Item1,option.Item2);
-
-        // buat response 
-        Table tableResponse = validTable;
-
-        // buat nyari index dan ngegantiin table yang ada
-        int targetIndex = HelperGeneral<Table>.FindAnyListIndex(
-            repository.DB,
-            x => x.table_num,
-            validTable.table_num
-            );
-        repository.DB[targetIndex] = validTable;
+        int targetIndex = repository.DB.FindIndex(x => x.table_num == tableRequest.table_num);
+        repository.DB[targetIndex] = tableRequest;
 
         // return response
-        return tableResponse;
+        return tableRequest;
     }
 
-    public void DeleteATable(string id) // DELETE
+    public void DeleteATable(string tableNum) // DELETE
     {
-        (bool,Table) option = FindAnyTable(id);
-        Table validTable = HelperGeneral<Table>.ValidateSearchOutput(option.Item1,option.Item2);
-
-        int targetIndex = HelperGeneral<Table>.FindAnyListIndex(
-            repository.DB,
-            x => x.table_num,
-            validTable.table_num
-            );
-
-        repository.DB.RemoveAt(targetIndex);
-
-        Console.WriteLine($"REMOVED : {validTable.table_num}");
+        int targetIndex = repository.DB.FindIndex(x => x.table_num == tableNum); // cari index
+        repository.DB.RemoveAt(targetIndex); // delete
+        Console.WriteLine($"REMOVED : {tableNum}");
     }
 
 

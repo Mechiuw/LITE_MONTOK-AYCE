@@ -10,12 +10,13 @@ public class PenaltyService
 
     public Penalty CreatePenalty(Penalty penaltyRequest)
     {
-        Penalty cash = new();
-        cash.penalty_type = penaltyRequest.penalty_type;
-        cash.pay_penalty = penaltyRequest.pay_penalty;
+        Penalty cash = new()
+        {
+            penalty_type = penaltyRequest.penalty_type,
+            pay_penalty = penaltyRequest.pay_penalty
+        };
 
         repository.DB.Add(cash);
-
         return cash;
     }
     public Penalty FindAnyPenalty(string id)
@@ -32,13 +33,12 @@ public class PenaltyService
     public List<Penalty> FindAllPenalty(){return repository.DB;}
     public Penalty UpdatePenalty(Penalty penaltyRequest)
     {
-        Penalty findPenalty = FindAnyPenalty(penaltyRequest.id);
-        int targetIndex = repository.DB.FindIndex(x => x.id == findPenalty.id);
-        repository.DB[targetIndex] = penaltyRequest;
+        _ = FindAnyPenalty(penaltyRequest.id); // validasi, akan otomatis discard value karena hanya butuh validasi
 
-        Penalty penaltyResponse = findPenalty;
+        int targetIndex = repository.DB.FindIndex(x => x.id == penaltyRequest.id); // cari index yang dituju
+        repository.DB[targetIndex] = penaltyRequest; // ganti / tindih value dengan index yang dimaksud dengan value baru
+        return penaltyRequest; // kembalikan hasil nya 
 
-        return penaltyResponse;
     }
     public void DeletePenalty(string id)
     {

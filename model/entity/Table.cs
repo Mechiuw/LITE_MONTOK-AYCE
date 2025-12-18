@@ -14,13 +14,5 @@ public class Table
         };
     }
 
-    public static Table NotFoundQuery()
-    {
-        return new Table
-        {
-          table_num = "not found",
-          id_session = "not found",
-          status = ETableStatus.BLANK  
-        };
-    }
+    
 }
