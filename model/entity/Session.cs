@@ -1,6 +1,6 @@
 public class Session
 {
-    public string id;
+    public string id = Guid.NewGuid().ToString();
     public int total_person;
     public string id_current_table;
     public List<string> id_package;

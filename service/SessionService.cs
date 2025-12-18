@@ -32,14 +32,15 @@ public class SessionService
         
         // VALIDASI PENALTY PADA SESSION
         var penaltyIds = new HashSet<string>(sessionRequest.penalties); // tampung id penalty masing2
-        List<Penalty> validPenalty = [.. penaltyRepository.DB.Where(x => sessionRequest.penalties.Contains(x.id))]; // cari penalty yang ada dan valid
+        List<Penalty> validPenalty = [.. penaltyRepository.DB.Where(x => penaltyIds.Contains(x.id))]; // cari penalty yang ada dan valid
         if(validPenalty.Count != penaltyIds.Count)
         {
             throw new Exception("Invalid Penalty Detected");
         }
 
         // VALIDASI TABLE PADA SESSION
-        var validTable = tableRepository.DB.FirstOrDefault(x => x.table_num == sessionRequest.id_current_table);
+        var validTable = tableRepository.DB.FirstOrDefault(x => x.table_num == sessionRequest.id_current_table) 
+        ?? throw new Exception("Valid Table Result in session is null or not found");
         // pastikan di dispatch nanti akan manggil tableservice buat book table
 
         // CREATE SESSION NYA dengan value yang udah di validasi
@@ -58,11 +59,17 @@ public class SessionService
         repository.DB.Add(newValidSession);
         return newValidSession;
     }
-    public Session FindSession(string id){return null;}
+    public Session FindSession(string id)
+    {
+        return repository.DB.First(session => session.id == id) 
+        ?? throw new Exception($"Not found any Session with id :{id}");
+    }
     public List<Session> FindActiveSession()
     {
-        return repository.DB;
+        return [.. repository.DB.Where(session => session.open_status)];
     }
-    public Session UpdateSession(Session sessionRequest){return null;}
-    public void DeleteSession(string id){}
+    public Session AssignSessionStatus(string id,)
+    {
+        
+    }
 }

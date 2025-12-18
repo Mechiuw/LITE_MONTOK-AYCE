@@ -33,21 +33,27 @@ public class PenaltyService
     public List<Penalty> FindAllPenalty(){return repository.DB;}
     public Penalty UpdatePenalty(Penalty penaltyRequest)
     {
-        _ = FindAnyPenalty(penaltyRequest.id); // validasi, akan otomatis discard value karena hanya butuh validasi
-
         int targetIndex = repository.DB.FindIndex(x => x.id == penaltyRequest.id); // cari index yang dituju
+
+        if(targetIndex == -1) // validasi jika index gaada
+        {
+            throw new Exception("PENALTY NOT FOUND");
+        }
+
         repository.DB[targetIndex] = penaltyRequest; // ganti / tindih value dengan index yang dimaksud dengan value baru
         return penaltyRequest; // kembalikan hasil nya 
 
     }
     public void DeletePenalty(string id)
     {
-        foreach (Penalty findPenalty in repository.DB)
+        int targetIndex = repository.DB.FindIndex(x => x.id == id); // cari index yang dituju
+
+        if(targetIndex == -1) // validasi jika index gaada
         {
-            if(findPenalty.id == id)
-            {
-                repository.DB.Remove(findPenalty);
-            }
+            throw new Exception("PENALTY NOT FOUND");
         }
+
+        repository.DB.RemoveAt(targetIndex);
     }
+
 }

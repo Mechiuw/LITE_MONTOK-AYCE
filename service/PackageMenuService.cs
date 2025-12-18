@@ -36,6 +36,10 @@ public class PackageMenuService
     {
         PackageMenu findMenu = FindAnyMenu(menuRequest.id);
         int targetIndex = repository.DB.FindIndex(x => x.id == findMenu.id);
+        if(targetIndex == -1)
+        {
+            throw new Exception("MENU NOT FOUND");
+        }
 
         PackageMenu packageResponse = findMenu;
 
@@ -43,13 +47,12 @@ public class PackageMenuService
     }
     public void DeleteMenu(string id)
     {
-        foreach (PackageMenu findMenu in repository.DB)
+        int targetIndex = repository.DB.FindIndex(x => x.id == id);
+        if(targetIndex == -1)
         {
-            if(findMenu.id == id)
-            {
-                repository.DB.Remove(findMenu);
-            }
+            throw new Exception("MENU NOT FOUND");
         }
+        repository.DB.RemoveAt(targetIndex);
     }
 
 }

@@ -38,21 +38,34 @@ public class TableService
     }
     public Table UpdateATable(Table tableRequest) // UPDATE
     {
-        _ = FindAnyTable(tableRequest.table_num);
-
         int targetIndex = repository.DB.FindIndex(x => x.table_num == tableRequest.table_num);
+        if(targetIndex == -1)
+        {
+            throw new Exception("TABLE NOT FOUND");
+        }
         repository.DB[targetIndex] = tableRequest;
 
         // return response
         return tableRequest;
     }
-
     public void DeleteATable(string tableNum) // DELETE
     {
         int targetIndex = repository.DB.FindIndex(x => x.table_num == tableNum); // cari index
         repository.DB.RemoveAt(targetIndex); // delete
         Console.WriteLine($"REMOVED : {tableNum}");
     }
+    public Table AssignTableStatus(string id,ETableStatus status)
+    {
+        int targetIndex = repository.DB.FindIndex(table => table.table_num == id);
+        if(targetIndex == -1)
+        {
+            throw new Exception();
+        }
 
+        Table targetTable = repository.DB[targetIndex];
+        targetTable.status = status;
+        repository.DB[targetIndex] = targetTable;
 
+        return targetTable;
+    }
 }
