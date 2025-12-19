@@ -1,6 +1,6 @@
 using System;
 
-public class tabelTransaksi
+public static class TuiTransaction
 {
     public static void DashboardPage()
     {

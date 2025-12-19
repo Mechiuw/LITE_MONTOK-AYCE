@@ -15,7 +15,7 @@ public class TableService
         int tableNumCounter = 1; // buat auto assign jika dari request null
         Table newTable = new()
         {
-            id_session = tableRequest.id_session,
+            id_session = null,
             status = ETableStatus.AVAILLABLE,
             table_num = tableRequest.table_num ?? $"{tableNumCounter++}"
         };
@@ -36,7 +36,7 @@ public class TableService
     {
         return repository.DB;
     }
-    public Table UpdateATable(Table tableRequest) // UPDATE
+    public Table UpdateTable(Table tableRequest) // UPDATE
     {
         int targetIndex = repository.DB.FindIndex(x => x.table_num == tableRequest.table_num);
         if(targetIndex == -1)
@@ -48,13 +48,13 @@ public class TableService
         // return response
         return tableRequest;
     }
-    public void DeleteATable(string tableNum) // DELETE
+    public void DeleteTable(string tableNum) // DELETE
     {
         int targetIndex = repository.DB.FindIndex(x => x.table_num == tableNum); // cari index
         repository.DB.RemoveAt(targetIndex); // delete
         Console.WriteLine($"REMOVED : {tableNum}");
     }
-    public Table AssignTableStatus(string id,ETableStatus status)
+    public Table AssignTable(string id, string id_session_request)
     {
         int targetIndex = repository.DB.FindIndex(table => table.table_num == id);
         if(targetIndex == -1)
@@ -63,7 +63,8 @@ public class TableService
         }
 
         Table targetTable = repository.DB[targetIndex];
-        targetTable.status = status;
+        targetTable.status = ETableStatus.OCCUPIED;
+        targetTable.id_session = id_session_request;
         repository.DB[targetIndex] = targetTable;
 
         return targetTable;

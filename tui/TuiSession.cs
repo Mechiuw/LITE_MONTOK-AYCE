@@ -1,18 +1,18 @@
 using System;
 
-public class tabelSesi
+public static class TuiSession
 {
     public static void DashboardPage()
     {
         Console.Clear();
         Console.WriteLine("====================================");
-        Console.WriteLine("           TABLE DASHBOARD          ");
+        Console.WriteLine("           SESSION DASHBOARD          ");
         Console.WriteLine("====================================");
         Console.WriteLine();
-        Console.WriteLine("[1] Create Table");
-        Console.WriteLine("[2] View Table");
-        Console.WriteLine("[3] Update Table");
-        Console.WriteLine("[4] Delete Table");
+        Console.WriteLine("[1] Create Session");
+        Console.WriteLine("[2] View Session");
+        Console.WriteLine("[3] Update Session");
+        Console.WriteLine("[4] Delete Session");
         Console.WriteLine("[0] Back / Exit");
         Console.WriteLine();
         Console.WriteLine("====================================");
@@ -23,16 +23,12 @@ public class tabelSesi
     {
         Console.Clear();
         Console.WriteLine("====================================");
-        Console.WriteLine("            CREATE TABLE            ");
+        Console.WriteLine("            CREATE SESSION            ");
         Console.WriteLine("====================================");
         Console.WriteLine();
         Console.WriteLine("Table Name    : ");
         Console.WriteLine("Capacity      : ");
         Console.WriteLine("Location      : ");
-        Console.WriteLine();
-        Console.WriteLine("[S] Save");
-        Console.WriteLine("[C] Cancel");
-        Console.WriteLine();
         Console.WriteLine("====================================");
     }
 
@@ -45,21 +41,13 @@ public class tabelSesi
         Console.WriteLine();
         Console.WriteLine("ID   | Name        | Capacity | Status  ");
         Console.WriteLine("----------------------------------------");
-        Console.WriteLine("01   | Content A     | 4        | Free  ");
-        Console.WriteLine("02   | Content B     | 6        | Used  ");
-        Console.WriteLine("03   | Content C     | 2        | Free  ");
-        Console.WriteLine();
-        Console.WriteLine("[1] View Detail");
-        Console.WriteLine("[0] Back");
-        Console.WriteLine();
-        Console.WriteLine("========================================");
     }
 
     public static void UpdateTablePage()
     {
         Console.Clear();
         Console.WriteLine("====================================");
-        Console.WriteLine("           UPDATE TABLE              ");
+        Console.WriteLine("           UPDATE SESSION              ");
         Console.WriteLine("====================================");
         Console.WriteLine();
         Console.WriteLine("Select Table ID : ");
@@ -68,9 +56,6 @@ public class tabelSesi
         Console.WriteLine("New Capacity    : ");
         Console.WriteLine("New Status      : ");
         Console.WriteLine();
-        Console.WriteLine("[U] Update");
-        Console.WriteLine("[C] Cancel");
-        Console.WriteLine();
         Console.WriteLine("====================================");
     }
 
@@ -78,15 +63,10 @@ public class tabelSesi
     {
         Console.Clear();
         Console.WriteLine("=======================================");
-        Console.WriteLine("             DELETE TABLE              ");
+        Console.WriteLine("             ASSIGN OFF SESSION              ");
         Console.WriteLine("=======================================");
         Console.WriteLine();
         Console.WriteLine("Pilih ID Tabel yang Ingin Dihapus : ");
-        Console.WriteLine();
-        Console.WriteLine("Apa anda yakin?");
-        Console.WriteLine();
-        Console.WriteLine("[Y] Yes, Delete");
-        Console.WriteLine("[N] No, Cancel");
         Console.WriteLine();
         Console.WriteLine("=======================================");
     }

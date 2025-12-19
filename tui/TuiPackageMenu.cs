@@ -1,12 +1,12 @@
 using System;
 
-public class tabelPaket
+public static class TuiPackageMenu
 {
     public static void DashboardPage()
     {
         Console.Clear();
         Console.WriteLine("====================================");
-        Console.WriteLine("           TABLE DASHBOARD          ");
+        Console.WriteLine("           MENU DASHBOARD          ");
         Console.WriteLine("====================================");
         Console.WriteLine();
         Console.WriteLine("[1] Create Table");
@@ -23,15 +23,11 @@ public class tabelPaket
     {
         Console.Clear();
         Console.WriteLine("====================================");
-        Console.WriteLine("            CREATE TABLE            ");
+        Console.WriteLine("            CREATE MENU            ");
         Console.WriteLine("====================================");
         Console.WriteLine();
-        Console.WriteLine("Table Name    : ");
+        Console.WriteLine("Table Number    : ");
         Console.WriteLine("Capacity      : ");
-        Console.WriteLine("Location      : ");
-        Console.WriteLine();
-        Console.WriteLine("[S] Save");
-        Console.WriteLine("[C] Cancel");
         Console.WriteLine();
         Console.WriteLine("====================================");
     }
@@ -40,26 +36,18 @@ public class tabelPaket
     {
         Console.Clear();
         Console.WriteLine("========================================");
-        Console.WriteLine("               VIEW TABLE               ");
+        Console.WriteLine("               VIEW MENU               ");
         Console.WriteLine("========================================");
-        Console.WriteLine();
         Console.WriteLine("ID   | Name        | Capacity | Status  ");
         Console.WriteLine("----------------------------------------");
-        Console.WriteLine("01   | Content A     | 4        | Free  ");
-        Console.WriteLine("02   | Content B     | 6        | Used  ");
-        Console.WriteLine("03   | Content C     | 2        | Free  ");
         Console.WriteLine();
-        Console.WriteLine("[1] View Detail");
-        Console.WriteLine("[0] Back");
-        Console.WriteLine();
-        Console.WriteLine("========================================");
     }
 
     public static void UpdateTablePage()
     {
         Console.Clear();
         Console.WriteLine("====================================");
-        Console.WriteLine("           UPDATE TABLE              ");
+        Console.WriteLine("           UPDATE MENU              ");
         Console.WriteLine("====================================");
         Console.WriteLine();
         Console.WriteLine("Select Table ID : ");
@@ -68,9 +56,6 @@ public class tabelPaket
         Console.WriteLine("New Capacity    : ");
         Console.WriteLine("New Status      : ");
         Console.WriteLine();
-        Console.WriteLine("[U] Update");
-        Console.WriteLine("[C] Cancel");
-        Console.WriteLine();
         Console.WriteLine("====================================");
     }
 
@@ -78,15 +63,10 @@ public class tabelPaket
     {
         Console.Clear();
         Console.WriteLine("=======================================");
-        Console.WriteLine("             DELETE TABLE              ");
+        Console.WriteLine("             DELETE MENU              ");
         Console.WriteLine("=======================================");
         Console.WriteLine();
         Console.WriteLine("Pilih ID Tabel yang Ingin Dihapus : ");
-        Console.WriteLine();
-        Console.WriteLine("Apa anda yakin?");
-        Console.WriteLine();
-        Console.WriteLine("[Y] Yes, Delete");
-        Console.WriteLine("[N] No, Cancel");
         Console.WriteLine();
         Console.WriteLine("=======================================");
     }
