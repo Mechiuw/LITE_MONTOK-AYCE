@@ -1,26 +1,22 @@
 public class TransactionService
 {
     private readonly TransactionRepository repository;
-    private readonly SessionRepository sessionRepository;
 
-    public TransactionService(SessionRepository _sessionRepository,TransactionRepository _repository)
+    public TransactionService(TransactionRepository _repository)
     {
         this.repository = _repository;
-        this.sessionRepository = _sessionRepository;
     }
 
-    public Transaction Create(Transaction transactionRequest)
+    public Transaction CreatePermanent(string validSession, double total)
     {
-        Session validSession = new();
-        foreach (Session session in sessionRepository.DB)
+        Transaction newTrx = new()
         {
-            if(transactionRequest.id_session == session.id)
-            {
-                validSession = session;
-            }
-        }
-        // lanjutin ini session dan transaction
+            id_session = validSession,
+            total_pay = total
+        };
 
-        return new();
+        repository.DB.Add(newTrx);
+
+        return newTrx;
     }
 }

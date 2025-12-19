@@ -5,12 +5,15 @@ public class SessionService
     private readonly PackageMenuRepository packageMenuRepository;
     private readonly PenaltyRepository penaltyRepository;
     private readonly TableRepository tableRepository;
+    private readonly TransactionService trxService;
     public SessionService(
+    TransactionService _trxService,
     SessionRepository _repository,
     PackageMenuRepository _packageMenuRepository,
     PenaltyRepository _penaltyRepository,
     TableRepository _tableRepository)
 {
+    this.trxService = _trxService;
     this.repository = _repository;
     this.packageMenuRepository = _packageMenuRepository;
     this.penaltyRepository = _penaltyRepository;
@@ -31,7 +34,7 @@ public class SessionService
         
         
         // VALIDASI PENALTY PADA SESSION
-        var penaltyIds = new HashSet<string>(sessionRequest.penalties); // tampung id penalty masing2
+        var penaltyIds = new HashSet<string>(sessionRequest.id_penalties); // tampung id penalty masing2
         List<Penalty> validPenalty = [.. penaltyRepository.DB.Where(x => penaltyIds.Contains(x.id))]; // cari penalty yang ada dan valid
         if(validPenalty.Count != penaltyIds.Count)
         {
@@ -52,7 +55,7 @@ public class SessionService
             id_package = [.. validPackages.Select(x => x.id)],
             start_time = DateTime.UtcNow,
             end_time = null, // sengaja null karena akan di assign nanti lewat EndSession();
-            penalties = [.. validPenalty.Select(x => x.id)],
+            id_penalties = [.. validPenalty.Select(x => x.id)],
             open_status = true
         };
 
@@ -68,8 +71,38 @@ public class SessionService
     {
         return [.. repository.DB.Where(session => session.open_status)];
     }
-    public Session AssignSessionStatus(string id,)
+    public Session EndSession(string id)
     {
         
+        // FIND INDEX
+        int targetIndex = repository.DB.FindIndex(session => session.id == id);
+        if(targetIndex == -1)
+        {
+            throw new Exception();
+        }
+
+        // GUARD
+        if (!repository.DB[targetIndex].open_status)
+        {
+            throw new Exception("Session already closed");
+        }
+
+        Session targetSession = repository.DB[targetIndex]; // buat obj session baru
+
+        targetSession.open_status = false; // set open_status jadi false
+        targetSession.end_time = DateTime.Now; // set end time date sekarang
+        repository.DB[targetIndex] = targetSession; // tindih data
+        
+        List<PackageMenu> packageMenus = [.. packageMenuRepository.DB.Where(x => targetSession.id_package.Contains(x.id))]; // cari semua paket menu yang diambil
+        List<Penalty> penalties = [.. penaltyRepository.DB.Where(x => targetSession.id_penalties.Contains(x.id))]; // cari semua penalty yang ada
+
+        double totalPackage = TrxCalculator.CalculatePackage(packageMenus); // hitung total dari package 
+        double totalPenalty = TrxCalculator.CalculatePenalty(penalties); // hitung total dari penalty
+
+        double totalTrx = TrxCalculator.CalculatePayment(targetSession.total_person, totalPenalty, totalPackage); // hitung total semua
+        trxService.CreatePermanent(targetSession.id,totalTrx); // panggil dan buat transaction langsung, karena data semuanya terpusat di session
+
+        return targetSession; // kembalikan session
     }
+
 }

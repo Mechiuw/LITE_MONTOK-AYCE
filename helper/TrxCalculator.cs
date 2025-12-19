@@ -2,14 +2,18 @@ public class TrxCalculator
 {
     public static double CalculatePayment(int total_person, double total_penalty, double total_package)
     {
-        // if() // kalo gaada penalti
-        // {
-        //     Console.WriteLine("[PENALTY CALC] No Penalties Found");
-        // }
+        double total = (total_person * total_package)
+        + total_penalty;
 
-        //1. kalo gaada penalti
-        //2. kalo gaada penambahan menu
-        
-        return 0;
+        return total;
     } 
+
+    public static double CalculatePackage(List<PackageMenu> packageMenus)
+    {
+        return packageMenus.Sum(menu => menu.price);
+    }
+    public static double CalculatePenalty(List<Penalty> penalties)
+    {
+        return penalties.Sum(penalty => penalty.pay_penalty);
+    }
 }

@@ -17,7 +17,7 @@ public class TuiDashboard
         Console.WriteLine("│  OPEN SESSIONS                                               │");                                     
         foreach (Session session in sessions)
         {
-            Console.WriteLine($" • {session.id} | {session.total_person} | {session.timer_session} | {session.open_status} ");
+            Console.WriteLine($" • {session.id} | {session.total_person} | {session.start_time} | {session.open_status} ");
         }
         Console.WriteLine("├──────────────────────────────────────────────────────────────┤");
         Console.WriteLine("│ AVAILABLE TABLE LEFT                                         │");
