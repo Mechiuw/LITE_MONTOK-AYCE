@@ -1,9 +1,20 @@
 public class TuiDashboard
 {
-    public static void MainBoard(List<Session> sessions, List<Table> tables)
+    private readonly SessionService _sessionService;
+    private readonly TableService _tableService;
+
+    public TuiDashboard(SessionService sessionService, TableService tableService)
+    {
+        _sessionService = sessionService;
+        _tableService = tableService;
+    }
+
+    public void MainBoard()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
+        var sessions = _sessionService.FindActiveSession();
+        var tables = _tableService.FindAllTable();
 
         // TABLE HIGHLIGHT DATA
         int totalTable = tables.Count;
@@ -28,8 +39,8 @@ public class TuiDashboard
         Console.WriteLine("        ┌──────────────────────────────────────────┐");
         Console.WriteLine("        │ NAVIGATION                                │");
         Console.WriteLine("        ├──────────────────────────────────────────┤");
-        Console.WriteLine("        │ [1]Table  [2]Menu  [3]Session              │");
-        Console.WriteLine("        │ [4]Penalty [5]Transaction                  │");
+        Console.WriteLine("        │ [1]Table  [2]Menu  [3]Penalty              │");
+        Console.WriteLine("        │ [4]Session [5]Transaction [6]Exit                 │");
         Console.WriteLine("        └──────────────────────────────────────────┘");
         Console.WriteLine();
 
