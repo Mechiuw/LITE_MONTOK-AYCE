@@ -27,11 +27,8 @@ namespace App.Bootstrap
 
             // 3️. Buat Dashboard, inject service jika perlu
             var dashboard = new TuiDashboard(
-                tableService,
-                menuService,
                 sessionService,
-                penaltyService,
-                trxService
+                tableService
             );
 
             // 4️⃣ Buat Router, inject semua handler + dashboard

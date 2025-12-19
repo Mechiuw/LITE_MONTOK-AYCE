@@ -1,4 +1,6 @@
-﻿public class Program
+﻿using App.Bootstrap;
+
+public class Program
 {
     public static void Menu(String[] args)
     {
@@ -6,6 +8,7 @@
     } 
     public static void Run()
     {
-        
+        var router = Bootstrap.AppConfig();
+        router.Route();
     } 
 }
